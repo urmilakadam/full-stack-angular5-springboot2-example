@@ -5,9 +5,6 @@
           <i class="fas fa-plus "></i><a href="#"  (click)="formEnabled()">ADDROW</a>
         </div>
         
-        
-          
-        
         <div class="search">
           <input name="search" placeholder="Search here ..." [(ngModel)]="searchText" type="text" minlength="15" size="32">
         </div>
@@ -15,28 +12,25 @@
           <table class="table table-bordered">
             <thead class="thead-dark" style="font-weight: bold;">
                 <tr>
-                    <td>Name</td>
-                    <td>Roll No</td>
-                    <td>Address</td>
-                    <td>Department</td>
-                    <td>Action</td>
-                  </tr>
-            </thead>
-            <tbody *ngFor="let item of users | dataFilter:searchText;let i=index" (click)="atForm(i)">
-              <tr>
-                  <td>{{item.name}}</td>
-                  <td>{{item.rollno}}</td>
-                  <td>{{item.address}}</td>
-                  <td>{{item.dept}}</td>
-                  <td><a href="#"  (click)="removeUser(item,i)"><i class="fa fa-trash addRow" aria-hidden="true"></i></a></td>
-              </tr>
-            </tbody>
-            <tfoot>
-                <i class="fa fa-pie-chart" aria-hidden="true"></i> <a  href="#" >Generate Report</a>
-            </tfoot>
-          </table>
-            
-        </div>
+                  <th >Name</th>
+                  <th >Roll No</th>
+                  <th >Address</th>
+                  <th >Department</th>
+                  <th >Edit</th>
+                  <th>Delete</th>
+                </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let item of users;let i=index">
+                  <th>{{item.name}}</th>
+                  <th>{{item.rollno}}</th>
+                  <th>{{item.address}}</th>
+                  <th>{{item.dept}}</th>
+                  <th><a href="#" (click)="dataOnform(item)"> Edit </a></th>
+                  <th><a href="#" (click)="removeStudent(item,i)"> delete </a></th>
+               </tr>
+              </tbody>
+            </table>
       </div>
       <div class="col-sm-3">
         <div>
@@ -76,61 +70,23 @@
                 </div>
               </div>
             <div class="form-group">
-                  <label for="my-input3">Address*</label>
-                  <input id="my-input3" 
-                  [disabled]="!showSave==true"
-                  [(ngModel)]="user1.address"
-                  
-                  class="form-control form-control-sm textCol" 
-                  #address="ngModel"
-                  [ngClass]="{'is-invalid':address?.errors && address?.touched}"
-                  type="text"
-                  name="address"
-                  required
-                  minlength="4">
-                  <div [hidden]="address?.errors?.required" class="invalid-feedback">
-                    invalid addresss length at least 4
-                  </div>
-                  <div [hidden]="address?.errors?.minlength" class="invalid-feedback">
-                    Address required
-                  </div>
-             </div>
-             <div class="form-group">
-               <label for="dept" >Department*</label>
-               <select id="dept"  [disabled]="!showSave==true" class="form-control form-control-sm textCol"
-               #selectValue="ngModel"
-               [ngClass]="{'is-invalid': selectValue?.errors && selectValue?.touched}"
-               [(ngModel)]="user1.dept" name="dept"
-               required>
-                  <option></option>
-                  <option value="IT" >IT</option>
-                  <option value="CS">CS</option>
-                  <option value="MECH" >MECH</option>
-                  <option value="PROD">PROD</option>
-                </select>
-                <div [hidden]="!selectValue?.errors?.required" class="invalid-feedback">
-                  Select Field required
-                </div> 
-             </div>
-             <div class="form-group">
-                 <div class="row mt-1">
-                   <div class="col-sm-6">
-                    <button type="button"
-                    [disabled]="!showSave" 
-                    class="btn btn-default form-control form-control-sm" 
-                  [ngClass]="{'hiddenClass':'showSave==true'}" (click)="onSubmit(userForm)">Save</button>
-                   </div>
-                   <div class="col-sm-6">
-                      <button type="button" class="btn btn-default form-control form-control-sm" style="
-                      /* background: #E5D8E1; */
-                      background: #DCDCE4;"
-                  (click)="clearAll(userForm)">Cancel</button>
-                    </div>
-                 </div>
-               
-             </div>
-        </form>
-        </div>
+                  <label for="">Address</label>
+                  <input  [disabled]="enableAddUser" type="text" name="" id="" class="form-control" placeholder="">
+            </div>
+           <div class="form-group">
+             <label for="my-select">Dept</label>
+             <select id="my-select"  [disabled]="enableAddUser" class="custom-select form-control">
+               <option value="IT">IT</option>
+               <option value="CS">CS</option>
+               <option value="MECH">MECH</option>
+               <option value="INST">INST</option>
+             </select>
+           </div>
+           <div class="form-group">
+             <button class="btn btn-light colorbutton" >Save</button>
+             <button class="btn btn-light colorbutton">clear</button>
+           </div>
+          </form>
       </div>
   </div>
 </div>

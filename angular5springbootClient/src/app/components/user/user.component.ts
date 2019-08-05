@@ -9,13 +9,10 @@ import { UserService } from '../../services/user.service';
 })
 export class UserComponent implements OnInit {
 
-  users: User[]=[];
-  searchText: string;
-  replaceBit:boolean=false;
-  @ViewChild ('userForm')form:any;
-  user1 = new User();
-  showSave: boolean = false;
-  showUpdate: boolean = false;
+  enableAddUser:boolean=true;
+  formUser:User;
+  users:User[];
+  constructor(private _userService:UserService) { }
 
    constructor(private _userService:UserService) { }
 

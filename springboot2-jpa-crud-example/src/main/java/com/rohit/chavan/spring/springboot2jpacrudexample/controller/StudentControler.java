@@ -21,6 +21,9 @@ public class StudentControler {
 
 	@Autowired
 	private StudentService studentService;
+	
+	@Autowired
+	private EmailUtil emailUtil;
 
 	@Autowired
 	private EmailUtil emailUtil;
@@ -37,10 +40,6 @@ public class StudentControler {
 
 	@PostMapping("/addStudents")
 	public boolean addData(@RequestBody Student data) {
-
-		String body = String.format("New Record Added into Student Database with  name=%S in %S Department ",
-				data.getName(), data.getDept());
-		emailUtil.sendMail("xyzspringtestapplication@gmail.com", "Record Added", body);
 		return studentService.addData(data);
 	}
 
