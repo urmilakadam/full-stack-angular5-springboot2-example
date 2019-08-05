@@ -64,6 +64,15 @@ public class StudentImpl implements StudentService {
 		
 		studentRepo.deleteById(id);
 		
+	}
+	
+	
+	public void deptViseInfo(String dept) {
 		
+		List<Student> list = studentRepo.findAll();
+		list.stream().filter(entity->entity.getDept().equalsIgnoreCase(dept))
+			.findAny().isPresent(
+					//this.sendMailDeptViseInfo(dept);
+					);
 	}
 }

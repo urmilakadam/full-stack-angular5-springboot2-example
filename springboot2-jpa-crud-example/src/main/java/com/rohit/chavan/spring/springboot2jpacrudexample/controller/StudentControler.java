@@ -13,12 +13,17 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.rohit.chavan.spring.springboot2jpacrudexample.entity.Student;
 import com.rohit.chavan.spring.springboot2jpacrudexample.services.StudentService;
+import com.rohit.chavan.spring.springboot2jpacrudexample.utilLayer.EmailUtil;
+
 @RestController
 @RequestMapping("/api")
 public class StudentControler {
 
 	@Autowired
 	private StudentService studentService;
+
+	@Autowired
+	private EmailUtil emailUtil;
 
 	@GetMapping("/getData")
 	public List<Student> getData() {
@@ -32,9 +37,13 @@ public class StudentControler {
 
 	@PostMapping("/addStudents")
 	public boolean addData(@RequestBody Student data) {
+
+		String body = String.format("New Record Added into Student Database with  name=%S in %S Department ",
+				data.getName(), data.getDept());
+		emailUtil.sendMail("xyzspringtestapplication@gmail.com", "Record Added", body);
 		return studentService.addData(data);
 	}
-	
+
 	@DeleteMapping("/api/deleteStudent")
 	public boolean deleteStudent(@RequestParam("id") Long id) {
 		studentService.deleteStudent(id);
