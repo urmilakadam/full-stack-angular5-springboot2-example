@@ -1,0 +1,71 @@
+.co1 {
+    height: auto;
+  }
+  .show {
+    border: 1px solid gray;
+  }
+  
+  .addRow {
+    color: #0F8E1D;
+    float: left;
+  }
+  
+  .addRow a {
+    color: #6F838C;
+  }
+  
+  .search {
+    float: right;
+  }
+  
+  thead {
+    height: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    font-style: bold;
+    color: black;
+    background-color: #DCDDE1;
+  }
+  
+  .tableForm {
+    margin-top: 50px;
+  }
+  
+  .form-group {
+    margin-bottom: 0;
+  }
+  
+  .textCol {
+    background-color: #EBEAE5;
+    height: 28px;
+    border: 1px solid gray;
+  }
+  
+  .textAreaCol {
+    background-color: #EBEAE5;
+    border: 1px solid gray;
+  }
+  
+  .table th,
+  .table td {
+    padding: 3px;
+    vertical-align: top;
+  }
+  
+  .table-bordered {
+    border: 1px solid gray;
+  }
+  
+  .hiddenClass {
+    background: #DCDCE4;
+  }
+  
+  .form-control-sm,
+  .input-group-sm>.form-control,
+  .input-group-sm>.input-group-addon,
+  .input-group-sm>.input-group-btn>.btn {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    border-radius: 0;
+  }
+  
